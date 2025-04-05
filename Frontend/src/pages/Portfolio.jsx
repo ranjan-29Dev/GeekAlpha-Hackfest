@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import {
   BarChart3,
-  Download,
   TrendingUp,
   AlertTriangle,
-  RefreshCw,
   ArrowUpRight,
   ArrowDownRight
 } from 'lucide-react';
@@ -78,16 +76,14 @@ export default function Portfolio() {
 
       {/* Controls */}
       <main className="container mx-auto px-6 py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           {[
             { icon: <TrendingUp />, label: 'Performance Insights' },
             { icon: <AlertTriangle />, label: 'Risk Analysis' },
-            { icon: <RefreshCw />, label: 'Rebalance Portfolio' },
-            { icon: <Download />, label: 'Export Data' }
           ].map((item, idx) => (
             <button
               key={idx}
-              className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition text-center"
+              className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition text-center w-full"
             >
               <div className="flex flex-col items-center">
                 <div className="text-yellow-400 mb-2">{item.icon}</div>
@@ -184,3 +180,4 @@ export default function Portfolio() {
     </div>
   );
 }
+

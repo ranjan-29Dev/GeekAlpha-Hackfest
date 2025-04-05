@@ -1,3 +1,4 @@
+import { IconBrandProducthunt } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { Zap, LineChart, Brain, TrendingUp, Shield, Users, AlertTriangle } from 'lucide-react';
 import { Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart as RechartsLineChart } from 'recharts';
@@ -180,6 +181,17 @@ export const Market = () => {
                 <div className="flex items-center space-x-2">
                   <AlertTriangle className="text-yellow-400" />
                   <p className="text-xl font-bold text-yellow-400">Medium</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-red-900 p-6 rounded-xl"
+              >
+                <h4 className="text-black-400 mb-2">Stocks/Mutual Funds</h4>
+                <div className="flex items-center space-x-2">
+                  
+                  <p className="text-2xl font-bold text-black-500"> BUY & SELL</p>
                 </div>
               </motion.div>
             </div>

@@ -1,34 +1,26 @@
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
-const portfolioData = [
-  { month: "Jan", value: 40000 },
-  { month: "Feb", value: 45000 },
-  { month: "Mar", value: 60000 },
-  { month: "Apr", value: 58000 },
-  { month: "May", value: 70000 },
-  { month: "Jun", value: 75000 },
-  { month: "Jul", value: 80000 },
-  { month: "Aug", value: 90000 },
-  { month: "Sep", value: 100000 },
-  { month: "Oct", value: 110000 },
-  { month: "Nov", value: 120000 },
-  { month: "Dec", value: 135000 },
+const platformInvestmentData = [
+  { platform: "MF Central", value: 40000 },
+  { platform: "Angel One", value: 35000 },
+  { platform: "Zerodha", value: 49000 },
 ];
 
-const investmentData = [
-  { month: "Jan", value: 38000 },
-  { month: "Feb", value: 40000 },
-  { month: "Mar", value: 50000 },
-  { month: "Apr", value: 55000 },
-  { month: "May", value: 60000 },
-  { month: "Jun", value: 65000 },
-  { month: "Jul", value: 70000 },
-  { month: "Aug", value: 78000 },
-  { month: "Sep", value: 85000 },
-  { month: "Oct", value: 100000 },
-  { month: "Nov", value: 110000 },
-  { month: "Dec", value: 130000 },
+const stockInvestmentData = [
+  { company: "AAPL", value: 15000 },
+  { company: "GOOGL", value: 12000 },
+  { company: "MSFT", value: 18000 },
+  { company: "AMZN", value: 22000 },
+  { company: "TSLA", value: 16000 },
 ];
 
 const PortfolioDetails = () => {
@@ -44,7 +36,7 @@ const PortfolioDetails = () => {
           <p className="text-green-400">+15.4%</p>
         </div>
         <div className="bg-[#111827] p-6 rounded-lg shadow-lg">
-          <p className="text-gray-400">Monthly Return</p>
+          <p className="text-gray-400">Total Return</p>
           <h2 className="text-2xl font-bold text-yellow-400">$7,850</h2>
           <p className="text-green-400">+6.3%</p>
         </div>
@@ -61,31 +53,35 @@ const PortfolioDetails = () => {
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-        {/* Portfolio Growth Chart */}
+        {/* Platform-wise Investment Chart */}
         <div className="bg-[#111827] p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-300 mb-4">Portfolio Growth</h2>
+          <h2 className="text-xl font-semibold text-gray-300 mb-4">
+            Platform-wise Investment Distribution
+          </h2>
           <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={portfolioData}>
+            <BarChart data={platformInvestmentData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-              <XAxis dataKey="month" stroke="#aaa" />
+              <XAxis dataKey="platform" stroke="#aaa" />
               <YAxis stroke="#aaa" />
               <Tooltip />
-              <Line type="monotone" dataKey="value" stroke="#FFD700" strokeWidth={2} dot={{ fill: "#FFD700" }} />
-            </LineChart>
+              <Bar dataKey="value" fill="#FFD700" barSize={40} />
+            </BarChart>
           </ResponsiveContainer>
         </div>
 
-        {/* Investment Distribution Chart */}
+        {/* Stock-wise Investment Chart */}
         <div className="bg-[#111827] p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-300 mb-4">Investment Distribution</h2>
+          <h2 className="text-xl font-semibold text-gray-300 mb-4">
+            Stock-wise Investment Distribution
+          </h2>
           <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={investmentData}>
+            <BarChart data={stockInvestmentData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-              <XAxis dataKey="month" stroke="#aaa" />
+              <XAxis dataKey="company" stroke="#aaa" />
               <YAxis stroke="#aaa" />
               <Tooltip />
-              <Line type="monotone" dataKey="value" stroke="#FFD700" strokeWidth={2} dot={{ fill: "#FFD700" }} />
-            </LineChart>
+              <Bar dataKey="value" fill="#FFD700" barSize={40} />
+            </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
@@ -126,22 +122,11 @@ const PortfolioDetails = () => {
           </table>
         </div>
       </div>
-
-      {/* Action Buttons */}
-      <div className="flex justify-center gap-6 mt-6">
-        <button className="bg-yellow-500 text-black px-6 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-400">
-          Invest More →
-        </button>
-        <button className="border border-yellow-500 text-yellow-400 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-600">
-          Withdraw Funds
-        </button>
-      </div>
     </div>
   );
 };
 
 export default PortfolioDetails;
-
 
 
 
