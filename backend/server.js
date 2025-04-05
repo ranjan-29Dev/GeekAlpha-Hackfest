@@ -4,13 +4,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user.routes");
 const investmentRoutes = require("./routes/investment.route");
-
+const marketRoutes = require("./routes/market.route");
 
 const app = express();
 app.use(express.json());
 
 app.use("/api/v1/user", userRouter);
-
+app.use("/api/market", marketRoutes);
 app.use("/api/investments", investmentRoutes);
 
 async function main() {
